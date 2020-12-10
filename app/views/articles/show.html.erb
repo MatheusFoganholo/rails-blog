@@ -8,5 +8,33 @@
   <%= @article.text %>
 </p>
 
+<h2>Comentários</h2>
+<% @article.comments.each do |comment| %>
+  <p>
+    <strong>Nome:</strong>
+    <%= comment.commenter %>
+  </p>
+
+  <p>
+    <strong>Comentário:</strong>
+    <%= comment.body %>
+  </p>
+<% end %>
+
+<h2>Adicione um comentário:</h2>
+<%= form_with(model: [ @article, @article.comments.build ], local: true) do |form| %>
+  <p>
+    <%= form.label 'Nome' %><br>
+    <%= form.text_field :commenter %>
+  </p>
+  <p>
+    <%= form.label 'Comentário' %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
 <%= link_to 'Editar artigo', edit_article_path(@article) %>
 <%= link_to 'Voltar para a listagem de artigos', articles_path %>
