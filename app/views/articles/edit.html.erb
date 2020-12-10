@@ -1,33 +1,5 @@
 <h1>Editar Artigo</h1>
 
-<%= form_with(model: @article, local: true) do |form| %>
-
-  <% if @article.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@article.errors.count, "error") %> não permitiram este artigo de ser salvo:
-      </h2>
-      <ul>
-        <li>
-          <%= msg %>
-        </li>
-      </ul>
-    </div>
-  <% end %>
-
-  <p>
-    <%= form.label :title %><br/>
-    <%= form.text_field :title %>
-  </p>
-
-  <p>
-    <%= form.label :text %><br/>
-    <%= form.text_area :text %>
-  </p>
-
-  <p>
-    <%= form.submit 'Atualizar'%>
-  </p>
-<% end %>
+<%= render 'form' %>
 
 <%= link_to 'Voltar para a listagem de artigos', articles_path %>
